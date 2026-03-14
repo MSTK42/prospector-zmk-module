@@ -6,7 +6,7 @@ zephyr_include_directories(include)
 zephyr_include_directories(${APPLICATION_SOURCE_DIR}/include)
 
 # Add status advertisement support - EXACTLY like rgbled-widget
-if(CONFIG_ZMK_STATUS_ADVERTISEMENT)
+if(CONFIG_ZMK_STATUS_ADVERTISEMENT AND ((NOT CONFIG_ZMK_SPLIT) OR CONFIG_ZMK_SPLIT_ROLE_CENTRAL))
         target_sources(app PRIVATE src/status_advertisement.c)
 endif()
 
